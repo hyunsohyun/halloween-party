@@ -279,6 +279,8 @@
     text-wrap: balance;
   }
   .row-addr{ font-size: 14px; color: var(--ink-dim); margin-top: 3px; user-select: text; }
+  .invite-block{ display: flex; flex-direction: column; gap: 6px; }
+  .invite-sub{ margin: 0; text-align: center; font-size: 14px; color: var(--ink-dim); }
 </style>
 </head>
 <body>
@@ -435,7 +437,10 @@
     </svg>
   </div>
 
-  <p class="invite-line">당신을 할로윈 파티에 초대합니다 👻</p>
+  <div class="invite-block">
+    <p class="invite-line">당신을 할로윈 파티에 초대합니다 👻</p>
+    <p class="invite-sub">자세한 일정은 추후 별도 공지</p>
+  </div>
 
   <div class="ticket">
     <p class="ticket-title">파티 정보</p>
@@ -483,8 +488,8 @@
       <li>
         <span class="check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
         <span>
-          <b>코스튬</b>
-          <span class="note">무서운 것, 웃긴 것, 귀여운 것 다 환영</span>
+          <b>할로윈 코스튬</b>
+          <span class="note">무서운 것, 웃긴 것, 귀여운 것 다 환영 (이왕이면 진심으로)</span>
         </span>
       </li>
       <li>
@@ -501,7 +506,7 @@
         <span class="check empty"></span>
         <span>
           <b>기타</b>
-          <span class="note">보드게임, 블루투스 스피커, 조명 등</span>
+          <span class="note">보드게임, 블루투스 스피커, 조명, 가스버너 등</span>
         </span>
       </li>
     </ul>
