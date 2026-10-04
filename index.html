@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>할로윈 파티 초대장</title>
+<meta name="description" content="10월 31일 토요일 오후 2시, 중랑캠핑숲에서 만나요.">
+<meta name="theme-color" content="#0d0b09">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hyunsohyun.github.io/halloween-party/">
+<meta property="og:title" content="할로윈 파티에 초대합니다 👻">
+<meta property="og:description" content="10월 31일 토요일 오후 2시 · 중랑캠핑숲">
+<meta property="og:image" content="https://hyunsohyun.github.io/halloween-party/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Black+Han+Sans&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  html{ -webkit-text-size-adjust: 100%; }
+  body{ margin: 0; }
+  img{ max-width: 100%; }
+  /* Layout: retro flat-vector poster (jack-o'-lantern + peeking ghost, teal frame) as the hero,
+     then a torn-ticket info card and a dress-code card continue the same black/cream/orange/teal palette. */
+  :root{
+    --bg: #0d0b09;
+    --card: #19140f;
+    --card-edge: rgba(245,234,217,0.16);
+    --cream: #f5ead9;
+    --ink: #f5ead9;
+    --ink-dim: #c7b6a1;
+    --orange: #ff7a1a;
+    --orange-soft: #ffa24d;
+    --orange-deep: #c94f09;
+    --teal: #3fc9bf;
+    --black: #0d0b09;
+    --shadow: rgba(0,0,0,0.5);
+    color-scheme: dark;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Gowun Dodum', 'Noto Sans KR', sans-serif;
+    padding-inline: 18px;
+    padding-block: 26px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .page{
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* ---- poster hero ---- */
+  .poster{
+    position: relative;
+    border: 7px solid var(--teal);
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--black);
+    box-shadow: 0 16px 34px -14px var(--shadow);
+  }
+  .poster svg{ display: block; width: 100%; height: auto; }
+  .headline{ font-family: 'Anton', sans-serif; letter-spacing: .01em; }
+
+
+
+  /* ---- ticket card ---- */
+  .ticket{
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--card-edge);
+    border-radius: 22px;
+    padding: 26px 22px 24px;
+    box-shadow: 0 14px 30px -10px var(--shadow);
+  }
+  .ticket::before, .ticket::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 26px; height: 26px;
+    background: var(--bg);
+    border-radius: 50%;
+    transform: translateX(-50%);
+  }
+  .ticket::before{ top: -13px; }
+  .ticket::after{ bottom: -13px; }
+  .ticket-divider{
+    border: none;
+    border-top: 2px dashed var(--card-edge);
+    margin: 18px 0;
+  }
+  .ticket-title{
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 15px;
+    color: var(--teal);
+    letter-spacing: .03em;
+    margin: 0 0 16px;
+  }
+  .row{
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  .row:last-child{ margin-bottom: 0; }
+  .icon{
+    flex: none;
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: rgba(255,122,26,0.16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon svg{ width: 19px; height: 19px; stroke: var(--orange-soft); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .row-label{ font-size: 12px; color: var(--ink-dim); margin-bottom: 2px; }
+  .row-value{ font-size: 17px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .row-value.muted{ font-weight: 400; color: var(--ink-dim); font-size: 15px; }
+
+  .copy-btn{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 14px;
+    width: 100%;
+    border: 1px solid var(--teal);
+    background: transparent;
+    color: var(--teal);
+    font-family: 'Gowun Dodum', sans-serif;
+    font-size: 13px;
+    padding: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  .copy-btn:active{ background: rgba(245,234,217,0.06); }
+  .copy-btn:focus-visible{ outline: 2px solid var(--teal); outline-offset: 2px; }
+
+  /* ---- dress code ---- */
+  .dress{
+    background: var(--card);
+    border: 1px solid var(--teal);
+    border-radius: 22px;
+    padding: 22px;
+  }
+  .dress h2{
+    margin-bottom: 14px !important;
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 20px;
+    margin: 0 0 4px;
+    color: var(--orange-soft);
+  }
+  .dress .sub{ font-size: 14px; color: var(--ink-dim); margin: 0 0 16px; }
+  .check-list{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+  .check-list li{
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .check-list b{ display:block; color: var(--ink); }
+  .check-list span.note{ display:block; color: var(--ink-dim); font-size: 13px; margin-top: 2px; }
+  .check{
+    flex: none;
+    width: 22px; height: 22px;
+    border-radius: 7px;
+    background: var(--teal);
+    display:flex; align-items:center; justify-content:center;
+    margin-top: 1px;
+  }
+  .check svg{ width: 13px; height: 13px; stroke: var(--black); fill:none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ---- footer ---- */
+  footer{
+    text-align: center;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  footer p{
+    font-size: 14px;
+    color: var(--ink-dim);
+    line-height: 1.7;
+    margin: 0 0 14px;
+  }
+  footer p strong{ color: var(--orange-soft); }
+  .pumpkins{ display:flex; justify-content:center; gap: 10px; margin-bottom: 10px; }
+  .pumpkins svg{ width: 28px; height: 28px; }
+
+  /* ---- poster animation ---- */
+  .ghost,.blink,.pumpkin,.wing,.party,.tw{ transform-box: fill-box; }
+  .ghost{ transform-origin: 50% 100%; animation: peek 5s ease-in-out infinite; }
+  .blink{ transform-origin: 50% 50%; animation: blink 5s infinite; }
+  .pumpkin{ transform-origin: 50% 100%; animation: breathe 3.2s ease-in-out infinite; }
+  .glow{ animation: flicker 2.3s linear infinite; }
+  .smoke-l{ animation: drift 7s ease-in-out infinite; }
+  .smoke-r{ animation: drift 8s ease-in-out infinite reverse; }
+  .wing-l{ transform-origin: 100% 60%; animation: flap .42s ease-in-out infinite alternate; }
+  .wing-r{ transform-origin: 0% 60%; animation: flap .42s ease-in-out infinite alternate; }
+  .bat-bob{ animation: bob 2.4s ease-in-out infinite; }
+  .fly{ animation: cross 11s linear infinite; }
+  .party{ transform-origin: 50% 50%; animation: wobble 3.6s ease-in-out infinite; }
+  .tw{ transform-origin: 50% 50%; animation: twinkle 2.6s ease-in-out infinite; }
+  .tw2{ animation-delay: .9s; }
+  .tw3{ animation-delay: 1.7s; }
+
+  @keyframes peek{
+    0%,12%{ transform: translateY(46px); }
+    28%,72%{ transform: translateY(0); }
+    50%{ transform: translateY(-7px) rotate(-2deg); }
+    90%,100%{ transform: translateY(46px); }
+  }
+  @keyframes blink{
+    0%,40%,46%,60%,66%,100%{ transform: scaleY(1); }
+    43%,63%{ transform: scaleY(0.1); }
+  }
+  @keyframes breathe{
+    0%,100%{ transform: scale(1,1); }
+    50%{ transform: scale(1.012,0.985); }
+  }
+  @keyframes flicker{
+    0%{ opacity: .45; } 12%{ opacity: .8; } 20%{ opacity: .4; } 34%{ opacity: .85; }
+    48%{ opacity: .55; } 60%{ opacity: .9; } 72%{ opacity: .35; } 86%{ opacity: .75; } 100%{ opacity: .45; }
+  }
+  @keyframes drift{
+    0%,100%{ transform: translate(0,0); }
+    50%{ transform: translate(7px,-9px); }
+  }
+  @keyframes flap{
+    from{ transform: scaleX(1) scaleY(1); }
+    to{ transform: scaleX(.45) scaleY(1.15); }
+  }
+  @keyframes bob{
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(-7px); }
+  }
+  @keyframes cross{
+    0%{ transform: translate(440px,250px); }
+    45%{ transform: translate(180px,232px); }
+    100%{ transform: translate(-50px,262px); }
+  }
+  @keyframes wobble{
+    0%,100%{ transform: rotate(-1.2deg); }
+    50%{ transform: rotate(1.2deg) scale(1.02); }
+  }
+  @keyframes twinkle{
+    0%,100%{ transform: scale(.35); opacity: .25; }
+    50%{ transform: scale(1); opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .poster svg *{ animation: none !important; }
+    .fly{ transform: translate(250px,236px); }
+  }
+
+  .group-label{
+    display: inline-block;
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: .04em;
+    padding: 4px 11px;
+    border-radius: 999px;
+    margin: 0 0 12px;
+  }
+  .group-label.must{ background: var(--orange); color: var(--black); }
+  .group-label.opt{ border: 1px solid var(--card-edge); color: var(--ink-dim); margin-top: 20px; }
+  .check.empty{ background: transparent; border: 2px solid var(--teal); }
+
+  .invite-line{
+    margin: 0;
+    text-align: center;
+    font-family: 'Black Han Sans', 'Gowun Dodum', sans-serif;
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--cream);
+    text-wrap: balance;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="poster">
+    <svg viewBox="0 0 400 605" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="할로윈 파티 포스터: 커다란 호박 뒤에서 유령이 빼꼼 내다보고, 박쥐가 날아다닙니다">
+      <defs>
+        <linearGradient id="pumpkinFill" gradientUnits="userSpaceOnUse" x1="0" y1="300" x2="0" y2="600">
+          <stop offset="0" stop-color="#ff8f2e"/>
+          <stop offset="0.55" stop-color="#ff7417"/>
+          <stop offset="1" stop-color="#ee5c08"/>
+        </linearGradient>
+        <radialGradient id="candle" gradientUnits="userSpaceOnUse" cx="200" cy="585" r="120">
+          <stop offset="0" stop-color="#ffe27a"/>
+          <stop offset="0.4" stop-color="#ff9a1a" stop-opacity="0.75"/>
+          <stop offset="1" stop-color="#ff7a1a" stop-opacity="0"/>
+        </radialGradient>
+        <clipPath id="faceClip">
+          <path d="M104,442 Q132,400 164,384 Q176,418 182,446 Q142,452 104,442 Z"/>
+          <path d="M296,442 Q268,400 236,384 Q224,418 218,446 Q258,452 296,442 Z"/>
+          <path d="M200,452 L189,473 L211,473 Z"/>
+          <path d="M70,462 Q200,520 330,462 Q200,610 70,462 Z"/>
+        </clipPath>
+        <path id="spark" d="M0,-9 Q1.6,-1.6 9,0 Q1.6,1.6 0,9 Q-1.6,1.6 -9,0 Q-1.6,-1.6 0,-9 Z"/>
+        <g id="batShape">
+          <path class="wing wing-l" d="M0,-2 C-10,-15 -25,-15 -36,-6 C-29,-6 -26,-2 -26,4 C-21,-1 -16,0 -13,6 C-9,1 -4,2 0,7 Z"/>
+          <path class="wing wing-r" d="M0,-2 C10,-15 25,-15 36,-6 C29,-6 26,-2 26,4 C21,-1 16,0 13,6 C9,1 4,2 0,7 Z"/>
+          <path d="M-5,-5 L-5,-14 L-1,-9 L1,-9 L5,-14 L5,-5 C6,2 3,9 0,10 C-3,9 -6,2 -5,-5 Z"/>
+        </g>
+      </defs>
+
+      <rect x="0" y="0" width="400" height="605" fill="#0d0b09"/>
+
+      <!-- twinkles -->
+      <g fill="#f5ead9">
+        <use href="#spark" class="tw" x="28" y="232"/>
+        <use href="#spark" class="tw tw2" x="372" y="226" transform="scale(1)"/>
+        <use href="#spark" class="tw tw3" x="232" y="262"/>
+        <use href="#spark" class="tw tw2" x="292" y="246"/>
+        <use href="#spark" class="tw tw3" x="20" y="150"/>
+        <use href="#spark" class="tw" x="382" y="140"/>
+      </g>
+
+      <!-- headline -->
+      <text x="200" y="108" text-anchor="middle" textLength="368" lengthAdjust="spacingAndGlyphs"
+            class="headline" font-size="96" fill="#f5ead9">HALLOWEEN</text>
+      <g class="party">
+        <text x="200" y="208" text-anchor="middle" textLength="250" lengthAdjust="spacingAndGlyphs"
+              class="headline" font-size="108" fill="#ff7a1a">PARTY</text>
+      </g>
+
+      <g transform="translate(0,45)">
+        <!-- smoke -->
+        <g class="smoke smoke-l" fill="#f5ead9">
+          <circle cx="14" cy="292" r="32"/>
+          <circle cx="-6" cy="258" r="24"/>
+          <circle cx="40" cy="322" r="24"/>
+          <circle cx="34" cy="262" r="15"/>
+          <rect x="-40" y="290" width="60" height="70"/>
+        </g>
+        <g class="smoke smoke-r" fill="#f5ead9">
+          <circle cx="346" cy="266" r="38"/>
+          <circle cx="386" cy="292" r="34"/>
+          <circle cx="312" cy="294" r="24"/>
+          <circle cx="378" cy="234" r="26"/>
+          <circle cx="334" cy="226" r="14"/>
+          <rect x="330" y="290" width="110" height="70"/>
+        </g>
+
+        <!-- bat on the smoke -->
+        <g transform="translate(346,268)">
+          <g class="bat-bob"><use href="#batShape" fill="#0d0b09" transform="scale(1.05)"/></g>
+        </g>
+
+        <!-- ghost -->
+        <g class="ghost">
+          <path d="M50,345 C42,268 68,212 118,212 C166,212 186,264 180,345 Z"
+                fill="#fbf3e4" stroke="#0d0b09" stroke-width="6" stroke-linejoin="round"/>
+          <path d="M150,232 C166,250 170,280 168,310" fill="none" stroke="#e4d6bf" stroke-width="6" stroke-linecap="round"/>
+          <g class="blink">
+            <ellipse cx="98" cy="262" rx="8.5" ry="13" fill="#0d0b09" transform="rotate(-8 98 262)"/>
+            <ellipse cx="132" cy="259" rx="8.5" ry="13" fill="#0d0b09" transform="rotate(-8 132 259)"/>
+            <circle cx="95" cy="256" r="2.6" fill="#fbf3e4"/>
+            <circle cx="129" cy="253" r="2.6" fill="#fbf3e4"/>
+          </g>
+          <ellipse cx="82" cy="283" rx="8" ry="5" fill="#ff9d6b" opacity="0.6"/>
+          <ellipse cx="149" cy="278" rx="8" ry="5" fill="#ff9d6b" opacity="0.6"/>
+        </g>
+
+        <!-- pumpkin -->
+        <g class="pumpkin">
+          <g fill="#0d0b09" stroke="#0d0b09" stroke-width="14">
+            <ellipse cx="60" cy="478" rx="120" ry="160"/>
+            <ellipse cx="340" cy="478" rx="120" ry="160"/>
+            <ellipse cx="130" cy="472" rx="100" ry="168"/>
+            <ellipse cx="270" cy="472" rx="100" ry="168"/>
+            <ellipse cx="200" cy="470" rx="92" ry="170"/>
+          </g>
+          <g fill="url(#pumpkinFill)" stroke="#cf5207" stroke-width="3.5">
+            <ellipse cx="60" cy="478" rx="120" ry="160"/>
+            <ellipse cx="340" cy="478" rx="120" ry="160"/>
+            <ellipse cx="130" cy="472" rx="100" ry="168"/>
+            <ellipse cx="270" cy="472" rx="100" ry="168"/>
+            <ellipse cx="200" cy="470" rx="92" ry="170"/>
+          </g>
+          <!-- highlights -->
+          <g fill="none" stroke="#ffb469" stroke-width="7" stroke-linecap="round" opacity="0.75">
+            <path d="M72,338 C52,356 40,384 36,412"/>
+            <path d="M150,320 C138,334 130,350 126,368"/>
+            <path d="M300,330 C318,344 330,362 336,382"/>
+          </g>
+
+          <!-- stem -->
+          <ellipse cx="202" cy="318" rx="36" ry="10" fill="#cf5207"/>
+          <path d="M180,324 C178,292 188,262 216,240 C226,234 242,246 236,256 C222,270 218,296 224,324 Q202,334 180,324 Z"
+                fill="#3f4d1f" stroke="#0d0b09" stroke-width="6" stroke-linejoin="round"/>
+          <path d="M194,316 C194,292 201,272 219,254" fill="none" stroke="#7d943a" stroke-width="5" stroke-linecap="round"/>
+
+          <!-- face -->
+          <g fill="#0d0b09">
+            <path d="M104,442 Q132,400 164,384 Q176,418 182,446 Q142,452 104,442 Z"/>
+            <path d="M296,442 Q268,400 236,384 Q224,418 218,446 Q258,452 296,442 Z"/>
+            <path d="M200,452 L189,473 L211,473 Z"/>
+            <path d="M70,462 Q200,520 330,462 Q200,610 70,462 Z"/>
+          </g>
+          <g clip-path="url(#faceClip)">
+            <rect class="glow" x="0" y="360" width="400" height="260" fill="url(#candle)"/>
+          </g>
+          <g fill="url(#pumpkinFill)">
+            <rect x="136" y="476" width="30" height="31" rx="3"/>
+            <rect x="234" y="476" width="30" height="31" rx="3"/>
+            <rect x="185" y="514" width="30" height="34" rx="3"/>
+          </g>
+
+          <!-- ghost paws resting on the pumpkin -->
+          <g fill="#fbf3e4" stroke="#0d0b09" stroke-width="5" stroke-linejoin="round">
+            <path d="M68,318 C64,300 78,292 90,296 C102,292 112,302 106,318 Z"/>
+            <path d="M132,312 C128,294 142,286 154,290 C166,286 176,296 170,312 Z"/>
+          </g>
+          <g fill="none" stroke="#0d0b09" stroke-width="3" stroke-linecap="round">
+            <path d="M82,300 L82,309"/><path d="M94,300 L94,309"/>
+            <path d="M146,294 L146,303"/><path d="M158,294 L158,303"/>
+          </g>
+        </g>
+      </g>
+
+      <!-- a small bat crossing the sky -->
+      <g class="fly">
+        <g class="bat-bob"><use href="#batShape" fill="#ffa24d" transform="scale(0.55)"/></g>
+      </g>
+
+      <text x="386" y="592" text-anchor="end" class="headline" font-size="30" fill="#0d0b09">OCT 31</text>
+    </svg>
+  </div>
+
+  <p class="invite-line">당신을 할로윈 파티에 초대합니다 👻</p>
+
+  <div class="ticket">
+    <p class="ticket-title">파티 정보</p>
+
+    <div class="row">
+      <span class="icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M8 3v4M16 3v4"/></svg>
+      </span>
+      <div>
+        <div class="row-label">날짜</div>
+        <div class="row-value">2026년 10월 31일 토요일</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <span class="icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      </span>
+      <div>
+        <div class="row-label">시간</div>
+        <div class="row-value">오후 2시 (14:00)</div>
+      </div>
+    </div>
+
+    <hr class="ticket-divider">
+
+    <div class="row">
+      <span class="icon">
+        <svg viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      </span>
+      <div style="width:100%">
+        <div class="row-label">장소</div>
+        <div class="row-value">중랑캠핑숲</div>
+      </div>
+    </div>
+
+    <a class="copy-btn" id="mapLink" href="https://map.naver.com/p/search/%EC%A4%91%EB%9E%91%EC%BA%A0%ED%95%91%EC%88%B2" target="_blank" rel="noopener">네이버 지도앱에서 보기</a>
+  </div>
+
+  <div class="dress">
+    <h2>준비물</h2>
+    <p class="group-label must">필수</p>
+    <ul class="check-list">
+      <li>
+        <span class="check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+        <span>
+          <b>코스튬</b>
+          <span class="note">무서운 것, 웃긴 것, 귀여운 것 다 환영</span>
+        </span>
+      </li>
+      <li>
+        <span class="check"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+        <span>
+          <b>할로윈 소품 하나씩</b>
+          <span class="note">장식용, 사진용, 분위기용</span>
+        </span>
+      </li>
+    </ul>
+    <p class="group-label opt">선택</p>
+    <ul class="check-list">
+      <li>
+        <span class="check empty"></span>
+        <span>
+          <b>기타</b>
+          <span class="note">보드게임, 블루투스 스피커, 조명 등</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <footer>
+    <div class="pumpkins" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M12 3c.5 1 .5 2 0 3" stroke="#3fc9bf" stroke-width="1.6" fill="none" stroke-linecap="round"/><ellipse cx="12" cy="14" rx="9" ry="7" fill="#ff7a1a"/><path d="M12 7v14" stroke="#c94f09" stroke-width="1.2"/><path d="M7 8v12M17 8v12" stroke="#c94f09" stroke-width="1"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 3c.5 1 .5 2 0 3" stroke="#3fc9bf" stroke-width="1.6" fill="none" stroke-linecap="round"/><ellipse cx="12" cy="14" rx="9" ry="7" fill="#ffa24d"/><path d="M12 7v14" stroke="#c94f09" stroke-width="1.2"/><path d="M7 8v12M17 8v12" stroke="#c94f09" stroke-width="1"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 3c.5 1 .5 2 0 3" stroke="#3fc9bf" stroke-width="1.6" fill="none" stroke-linecap="round"/><ellipse cx="12" cy="14" rx="9" ry="7" fill="#ff7a1a"/><path d="M12 7v14" stroke="#c94f09" stroke-width="1.2"/><path d="M7 8v12M17 8v12" stroke="#c94f09" stroke-width="1"/></svg>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
